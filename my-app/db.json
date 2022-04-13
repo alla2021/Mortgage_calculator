@@ -1,0 +1,20 @@
+{
+  "banks": [
+    {
+      "id": 1,
+      "name": "Monobank",
+      "interestRate": 7,
+      "maximumLoan": 500000,
+      "minimumDownPayment":10000,
+      "loanTerm":12
+    },
+    {
+      "id": 2,
+      "name": "Privat bank",
+      "interestRate": 8,
+      "maximumLoan": 500000,
+      "minimumDownPayment":20000,
+      "loanTerm":11
+    }
+  ]
+}
