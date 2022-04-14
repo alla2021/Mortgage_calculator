@@ -3,7 +3,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import AddForm from "./AddForm";
+import HomeIcon from "@mui/icons-material/Home";
+import CalculateIcon from "@mui/icons-material/Calculate";
+import AddIcon from "@mui/icons-material/Add";
 
 const Header = () => {
   return (
@@ -14,9 +16,18 @@ const Header = () => {
         </Typography>
       </Box>
       <Stack direction="row" spacing={2}>
-        <Button href="/">Banks management page</Button>
-        <Button href="/calculator">Mortgage calculator page</Button>
-        <Button href="/add-bank">AddForm</Button>
+        <Button href="/">
+          <HomeIcon color="secondary" />
+          Banks management page
+        </Button>
+        <Button href="/calculator">
+          <CalculateIcon color="secondary" />
+          Mortgage calculator page
+        </Button>
+        <Button href="/add-bank">
+          <AddIcon color="secondary" />
+          Add new bank
+        </Button>
       </Stack>
     </>
   );

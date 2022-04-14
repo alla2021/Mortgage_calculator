@@ -7,7 +7,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import { getBanks, deleteBankFromBd } from "../bankService";
 import { IBank } from "../types";
 
-
 const BanksPage = () => {
   const [bank, setBanks] = useState<IBank[]>([]);
   const { id } = useParams();

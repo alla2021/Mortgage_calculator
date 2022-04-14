@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material/";
 import { useNavigate } from "react-router-dom";
-import { getBanks, editBankData, addBankBd } from "../bankService";
+import { addBankBd } from "../bankService";
 
 function AddForm() {
-  const [banks, setBanks] = useState([]);
   const [title, setTitle] = useState("");
   const [interestRate, setInterestRate] = useState("");
   const [maximumLoan, setMaximumLoan] = useState("");

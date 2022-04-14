@@ -7,6 +7,22 @@
       "maximumLoan": "1",
       "minimumDownPayment": "3000",
       "loanTerm": "21"
+    },
+    {
+      "id": 619.9994281379284,
+      "title": "dddd",
+      "interestRate": "2",
+      "maximumLoan": "21",
+      "minimumDownPayment": "1",
+      "loanTerm": "11"
+    },
+    {
+      "id": 336.9738722105331,
+      "title": "ss",
+      "interestRate": "1",
+      "maximumLoan": "12",
+      "minimumDownPayment": "33",
+      "loanTerm": "3"
     }
   ]
 }
