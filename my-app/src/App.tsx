@@ -1,9 +1,10 @@
 import React from "react";
 import Header from "../src/components/Header";
 import BankCard from "../src/components/BankCard";
+import EditForm from "../src/components/EditForm";
 import BanksPage from "../src/pages/BanksPage";
 import CalculatorPage from "../src/pages/CalculatorPage";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<BanksPage />} />
         <Route path="/calculator" element={<CalculatorPage />} />
         <Route path="/info/:id" element={<BankCard />} />
+        <Route path="/edit-bank-info/:id" element={<EditForm />} /> 
       </Routes>
     </>
   );
