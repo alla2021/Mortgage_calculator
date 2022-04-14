@@ -1,3 +1,12 @@
 {
-  "banks": []
+  "banks": [
+    {
+      "id": 577.401960801895,
+      "title": "Monobanka",
+      "interestRate": "12",
+      "maximumLoan": "1",
+      "minimumDownPayment": "3000",
+      "loanTerm": "21"
+    }
+  ]
 }

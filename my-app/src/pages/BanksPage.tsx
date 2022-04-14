@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
+import { useParams } from "react-router-dom";
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material/";
+import {Paper, Button, Link} from "@mui/material/";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import { getBanks, deleteBankFromBd } from "../bankService";
 import { IBank } from "../types";
-import EditIcon from "@mui/icons-material/Edit";
+
 
 const BanksPage = () => {
   const [bank, setBanks] = useState<IBank[]>([]);
+  const { id } = useParams();
 
   useEffect(() => {
     async function getData() {
@@ -29,6 +26,9 @@ const BanksPage = () => {
       return prevBank.filter((item) => item.id !== bankItem);
     });
   }
+
+  const editBank = bank.find((item) => parseInt(id) === item.id);
+  console.log(editBank)
 
   return (
     <>
@@ -51,16 +51,16 @@ const BanksPage = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {row.title}
                 </TableCell>
                 <TableCell align="right">{row.interestRate}</TableCell>
                 <TableCell align="right">{row.maximumLoan}</TableCell>
                 <TableCell align="right">{row.minimumDownPayment}</TableCell>
                 <TableCell align="right">{row.loanTerm}</TableCell>
                 <TableCell align="right">
-                  <Button href={`/edit-bank-info/${row.id}`}>
+                  <Link href={`/editbank/${row.id}`}>
                     <EditIcon color="success" />
-                  </Button>
+                  </Link>
                   <Button onClick={() => removeBank(row.id)}>
                     <DeleteIcon color="secondary" />
                   </Button>

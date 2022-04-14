@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Button, TextField } from "@mui/material/";
-import { getBanks, editBankData } from "../bankService";
+import { getBanks, editBankData,updateBankData } from "../bankService";
 import { useNavigate } from "react-router-dom";
 import { IBank } from "../types";
 
@@ -9,25 +9,30 @@ function EditForm() {
   const { id } = useParams();
   console.log(id);
   const [formData, setFormData] = useState({
-    name: "",
+    title:'',
     interestRate: "",
     maximumLoan: "",
     minimumDownPayment: "",
     loanTerm: "",
   });
+  console.log('first,', formData)
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchList() {
+      console.log(parseInt(id),'dddddd')
       const banks = await getBanks();
       const editBank = banks.find((item: any) => {
-        return parseInt(id) === item.id;
+        console.log(id)
+        return parseInt(id) === parseInt(item.id);
       });
+      console.log(editBank)
       setFormData(editBank);
     }
     fetchList();
   }, [id]);
 
+ console.log('ss', formData)
   const handleUpdateBankItem = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     async function fetchList() {
@@ -35,7 +40,8 @@ function EditForm() {
       let bankToEditIndex = banks.findIndex((item) => parseInt(id) === item.id);
       banks[bankToEditIndex] = {
         ...banks[bankToEditIndex],
-        ...formData
+        ...formData,
+        
       };
       setFormData(banks);
     }
@@ -47,14 +53,15 @@ function EditForm() {
   return (
     <>
       <div>
+        aaaa{id}
         <form className="form" onSubmit={handleUpdateBankItem}>
           <TextField
             id="filled-basic"
-            label="Name"
+            label="title"
             required
             variant="outlined"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            value={formData.title}
+            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
           />
           <TextField
           id="filled-basic"

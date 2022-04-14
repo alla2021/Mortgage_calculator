@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import AddForm from "./AddForm";
 
 const Header = () => {
   return (
@@ -15,6 +16,7 @@ const Header = () => {
       <Stack direction="row" spacing={2}>
         <Button href="/">Banks management page</Button>
         <Button href="/calculator">Mortgage calculator page</Button>
+        <Button href="/add-bank">AddForm</Button>
       </Stack>
     </>
   );

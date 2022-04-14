@@ -1,6 +1,6 @@
 export interface IBank {
   id: number;
-  name: string;
+  title: string;
   interestRate: number;
   maximumLoan: number;
   minimumDownPayment: number;
