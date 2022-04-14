@@ -20,12 +20,11 @@ function AddForm() {
     let newBank = {
       id: Math.random() * 1000,
       title,
-      interestRate,
-      maximumLoan,
-      minimumDownPayment,
-      loanTerm,
+      interestRate:parseInt(interestRate),
+      maximumLoan:parseInt(maximumLoan),
+      minimumDownPayment:parseInt(minimumDownPayment),
+      loanTerm:parseInt(loanTerm),
     };
-    console.log("add newMovie", newBank);
     await addBankBd(newBank);
     handleClickRedirect();
   }

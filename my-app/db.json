@@ -1,28 +1,20 @@
 {
   "banks": [
     {
-      "id": 577.401960801895,
-      "title": "Monobanka",
-      "interestRate": "12",
-      "maximumLoan": "1",
-      "minimumDownPayment": "3000",
-      "loanTerm": "21"
+      "id": 624.212873018606,
+      "title": "Pumb",
+      "interestRate": 110,
+      "maximumLoan": 234000,
+      "minimumDownPayment": 2000,
+      "loanTerm": 2
     },
     {
-      "id": 619.9994281379284,
-      "title": "dddd",
-      "interestRate": "2",
-      "maximumLoan": "21",
-      "minimumDownPayment": "1",
-      "loanTerm": "11"
-    },
-    {
-      "id": 336.9738722105331,
-      "title": "ss",
-      "interestRate": "1",
-      "maximumLoan": "12",
-      "minimumDownPayment": "33",
-      "loanTerm": "3"
+      "id": 74.89019449195911,
+      "title": "Monobank",
+      "interestRate": 11,
+      "maximumLoan": 400000,
+      "minimumDownPayment": 11000,
+      "loanTerm": 15
     }
   ]
 }

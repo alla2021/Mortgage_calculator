@@ -19,7 +19,6 @@ const BanksPage = () => {
   }, []);
 
   async function removeBank(bankItem) {
-    console.log("ss", bankItem);
     await deleteBankFromBd(bankItem);
     setBanks((prevBank) => {
       return prevBank.filter((item) => item.id !== bankItem);
@@ -27,7 +26,6 @@ const BanksPage = () => {
   }
 
   const editBank = bank.find((item) => parseInt(id) === item.id);
-  console.log(editBank)
 
   return (
     <>
