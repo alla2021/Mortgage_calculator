@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material/";
-import {Paper, Button, Link} from "@mui/material/";
+import {Paper, Button, Container} from "@mui/material/";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { getBanks, deleteBankFromBd } from "../bankService";
@@ -27,6 +27,7 @@ const BanksPage = () => {
 
   return (
     <>
+    <Container maxWidth="lg">
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -65,6 +66,7 @@ const BanksPage = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      </Container>
     </>
   );
 };

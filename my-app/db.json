@@ -2,11 +2,27 @@
   "banks": [
     {
       "id": 170.1788102539419,
-      "title": "d",
-      "interestRate": 4,
-      "maximumLoan": 400,
-      "minimumDownPayment": 15,
+      "title": "Monobank",
+      "interestRate": 7,
+      "maximumLoan": 40000,
+      "minimumDownPayment": 1500,
       "loanTerm": 5
+    },
+    {
+      "id": 438.44784455830796,
+      "title": "Privat Bank",
+      "interestRate": 2,
+      "maximumLoan": 500000,
+      "minimumDownPayment": 5000,
+      "loanTerm": 10
+    },
+    {
+      "id": 29.77412121937939,
+      "title": "Oshad",
+      "interestRate": 4,
+      "maximumLoan": 44,
+      "minimumDownPayment": 44,
+      "loanTerm": 444
     }
   ]
 }

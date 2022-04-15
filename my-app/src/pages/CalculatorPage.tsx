@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Box } from "@mui/material/";
+import { Container, Box, Typography, Button, TextField  } from "@mui/material/";
 import { getBanks } from "../bankService";
-import { Typography } from "@mui/material";
 import { IBank } from "../types";
-import { Button, TextField } from "@mui/material/";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -14,7 +12,7 @@ const CalculatorPage = () => {
   const [selectedOption, setSelectedOption] = useState<IBank>();
   const [initialLoan, setInitialLoan] = useState(0);
   const [downPayment, setDownPayment] = useState(0);
-  const [result1, setResult] = useState("");
+  const [viewResult, setResult] = useState("");
 
   useEffect(() => {
     async function getData() {
@@ -28,19 +26,20 @@ const CalculatorPage = () => {
     const numberMouthPayment = selectedOption.loanTerm * 12;
     const pow = Math.pow(1 + monthlyRate, numberMouthPayment);
     const result = ((initialLoan * monthlyRate * pow) / pow - 1).toFixed(2);
-    let result1 = result;
+    let viewResult = result;
     if (initialLoan > selectedOption.maximumLoan) {
-      result1 = "The bank doesn't lent that much money. Reduce your loan amount.";
+      viewResult = "The bank doesn't lent that much money. Reduce your loan amount.";
     } else if (downPayment < selectedOption.minimumDownPayment) {
-      result1 = "Down payment DO NOT satisfies the minimum down payment boundary of the bank.";
+      viewResult = "Down payment DO NOT satisfies the minimum down payment boundary of the bank.";
     } else {
-      result1 = result;
+      viewResult = result;
     }
-    return setResult(result1);
+    return setResult(viewResult);
   };
 
   return (
     <>
+    <Container maxWidth="md">
       <Box>
         <TextField
           id="filled-basic"
@@ -58,6 +57,7 @@ const CalculatorPage = () => {
           type="number"
           required
           value={downPayment}
+          inputProps={{ min: "0", step: "100" }}
           onChange={(e:React.ChangeEvent<HTMLInputElement>) => setDownPayment(e.target.valueAsNumber)}
         />
         <FormControl fullWidth>
@@ -65,7 +65,9 @@ const CalculatorPage = () => {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={selectedOption}
+            // defaultValue=""
+            value={selectedOption ?? ''}
+            inputProps={{ min: "0", step: "100" }}
             onChange={(e:React.ChangeEvent<HTMLInputElement>) => setSelectedOption((e.target as any).value)}
           >
             {bank.map((item) => (
@@ -78,10 +80,11 @@ const CalculatorPage = () => {
         <Button variant="contained" type="submit" onClick={calculate}>
           Click
         </Button>
-        <Typography variant="h3" gutterBottom component="div">
-          {result1}
+        <Typography variant="h2" gutterBottom component="div">
+          {viewResult}
         </Typography>
       </Box>
+      </Container>
     </>
   );
 };

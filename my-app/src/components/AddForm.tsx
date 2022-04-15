@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, TextField, Box } from "@mui/material/";
+import { Container, Button, TextField, Box } from "@mui/material/";
 import { useNavigate } from "react-router-dom";
 import { addBankBd } from "../bankService";
 
@@ -29,13 +29,10 @@ function AddForm() {
     await addBankBd(newBank);
     handleClickRedirect();
   }
-  const exampleNumberType: number = 0;
-  // function checkChange(e) {
-  //   setInterestRate(e.target.value)
-  // }
 
   return (
     <>
+    <Container maxWidth="md">
     <form className="form" onSubmit={handleAddBankSubmit}>
       <Box>
       <TextField
@@ -53,6 +50,7 @@ function AddForm() {
         type="number"
         required
         value={interestRate}
+        inputProps={{ min: "0", max: "16", step: "0.1" }}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInterestRate(e.target.valueAsNumber)}
       />
       <TextField
@@ -61,6 +59,7 @@ function AddForm() {
         variant="outlined"
         required
         type="number"
+        inputProps={{ min: "0", step: "1" }}
         value={maximumLoan}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMaximumLoan(e.target.valueAsNumber)}
       />
@@ -70,6 +69,7 @@ function AddForm() {
         variant="outlined"
         required
         type="number"
+        inputProps={{ min: "0", step: "100" }}
         value={minimumDownPayment}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMinimumDownPayment(e.target.valueAsNumber)}
       />
@@ -79,6 +79,7 @@ function AddForm() {
         required
         variant="outlined"
         type="number"
+        inputProps={{ min: "0", max: "20", step: "1" }}
         value={loanTerm}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLoanTerm(e.target.valueAsNumber)}
       />
@@ -87,6 +88,7 @@ function AddForm() {
       </Button>
       </Box>
     </form>
+    </Container>
     </>
   );
 }
