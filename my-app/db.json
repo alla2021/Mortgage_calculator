@@ -1,20 +1,12 @@
 {
   "banks": [
     {
-      "id": 624.212873018606,
-      "title": "Pumb",
-      "interestRate": 110,
-      "maximumLoan": 234000,
-      "minimumDownPayment": 2000,
-      "loanTerm": 2
-    },
-    {
-      "id": 74.89019449195911,
-      "title": "Monobank",
-      "interestRate": 11,
-      "maximumLoan": 400000,
-      "minimumDownPayment": 11000,
-      "loanTerm": 15
+      "id": 170.1788102539419,
+      "title": "d",
+      "interestRate": 4,
+      "maximumLoan": 4,
+      "minimumDownPayment": 5,
+      "loanTerm": 5
     }
   ]
 }

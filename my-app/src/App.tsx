@@ -6,6 +6,8 @@ import AddForm from "../src/components/AddForm";
 import CalculatorPage from "../src/pages/CalculatorPage";
 import { Route, Routes } from "react-router-dom";
 
+
+
 function App() {
   return (
     <>
@@ -14,7 +16,7 @@ function App() {
         <Route path="/" element={<BanksPage />} />
         <Route path="/calculator" element={<CalculatorPage />} />
         <Route path="/editbank/:id" element={<EditForm />} /> 
-        <Route path="/add-bank" element={<AddForm />} /> 
+        <Route path="/add-bank" element={<AddForm/>} /> 
       </Routes>
     </>
   );

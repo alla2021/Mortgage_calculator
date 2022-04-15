@@ -25,8 +25,6 @@ const BanksPage = () => {
     });
   }
 
-  const editBank = bank.find((item) => parseInt(id) === item.id);
-
   return (
     <>
       <TableContainer component={Paper}>
@@ -38,7 +36,7 @@ const BanksPage = () => {
               <TableCell align="right">Maximum loan</TableCell>
               <TableCell align="right">Minimum down payment</TableCell>
               <TableCell align="right">Loan term</TableCell>
-              <TableCell align="right"></TableCell>
+              <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -55,9 +53,9 @@ const BanksPage = () => {
                 <TableCell align="right">{row.minimumDownPayment}</TableCell>
                 <TableCell align="right">{row.loanTerm}</TableCell>
                 <TableCell align="right">
-                  <Link href={`/editbank/${row.id}`}>
+                  <Button href={`/editbank/${row.id}`}>
                     <EditIcon color="success" />
-                  </Link>
+                  </Button>
                   <Button onClick={() => removeBank(row.id)}>
                     <DeleteIcon color="secondary" />
                   </Button>

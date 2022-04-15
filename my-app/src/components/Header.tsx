@@ -15,7 +15,7 @@ const Header = () => {
           Mortgage calculator
         </Typography>
       </Box>
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={6}>
         <Button href="/">
           <HomeIcon color="secondary" />
           Banks management page

@@ -6,11 +6,11 @@ import { Button, TextField } from "@mui/material/";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 
 const CalculatorPage = () => {
   const [bank, setBanks] = useState([]);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState([]);
   const [initialLoan, setInitialLoan] = useState("");
   const [downPayment, setDownPayment] = useState("");
 
@@ -23,24 +23,19 @@ const CalculatorPage = () => {
 
   console.log(selectedOption)
 
-  const a = () => {
-    const editBank = bank.find((item) => parseInt(selectedOption) === item.id);
-    console.log('jjj',editBank)
-  }
-
-// const calculatePayment = () => {
-//   // const p = parseInt(selectedOption)
-//   console.log(selectedOption,'ppppp')
-//   // const monthlyRate = parseInt(selectedOption.interestRate) / 12;
-//   // const numberMouthPayment = parseInt(selectedOption.loanTerm) * 12;
-//   // const mounthlyPayment = (initialLoan  * monthlyRate * Math.pow((1 + monthlyRate), numberMouthPayment)))
-//   // return mounthlyPayment /  Math.pow((1 + monthlyRate), numberMouthPayment));
-// }
+const calculate = (e) => {
+  const p = selectedOption;
+  const monthlyRate = (p.interestRate) / 12;
+  console.log(monthlyRate, 'monthlyRate')
+  const numberMouthPayment = p.loanTerm * 12;
+  const mounthlyPayment = initialLoan  * monthlyRate * Math.pow((1 + monthlyRate), numberMouthPayment)
+  const result = mounthlyPayment /  Math.pow((1 + monthlyRate), numberMouthPayment);
+  return console.log(result)
+}
 
   return (
     <>
       <Box>
-        <form className="form" >
           <TextField
             id="filled-basic"
             label="Initial loan"
@@ -74,10 +69,9 @@ const CalculatorPage = () => {
               ))}
             </Select>
           </FormControl>
-          <Button variant="contained" type="submit">
+          <Button variant="contained" type="submit" onClick={calculate}>
             Click
           </Button>
-        </form>
       </Box>
     </>
   );

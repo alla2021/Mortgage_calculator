@@ -3,12 +3,13 @@ import { Button, TextField } from "@mui/material/";
 import { useNavigate } from "react-router-dom";
 import { addBankBd } from "../bankService";
 
+
 function AddForm() {
   const [title, setTitle] = useState("");
-  const [interestRate, setInterestRate] = useState("");
-  const [maximumLoan, setMaximumLoan] = useState("");
-  const [minimumDownPayment, setMinimumDownPayment] = useState("");
-  const [loanTerm, setLoanTerm] = useState("");
+  const [interestRate, setInterestRate] = useState(0);
+  const [maximumLoan, setMaximumLoan] = useState(0);
+  const [minimumDownPayment, setMinimumDownPayment] = useState(0);
+  const [loanTerm, setLoanTerm] = useState(0);
   const navigate = useNavigate();
 
   function handleClickRedirect() {
@@ -20,14 +21,18 @@ function AddForm() {
     let newBank = {
       id: Math.random() * 1000,
       title,
-      interestRate:parseInt(interestRate),
-      maximumLoan:parseInt(maximumLoan),
-      minimumDownPayment:parseInt(minimumDownPayment),
-      loanTerm:parseInt(loanTerm),
+      interestRate,
+      maximumLoan,
+      minimumDownPayment,
+      loanTerm,
     };
     await addBankBd(newBank);
     handleClickRedirect();
   }
+  const exampleNumberType: number = 0;
+  // function checkChange(e) {
+  //   setInterestRate(e.target.value)
+  // }
 
   return (
     <form className="form" onSubmit={handleAddBankSubmit}>
@@ -46,7 +51,7 @@ function AddForm() {
         type="number"
         required
         value={interestRate}
-        onChange={(e) => setInterestRate(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInterestRate(e.target.valueAsNumber)}
       />
       <TextField
         id="filled-basic"
@@ -55,7 +60,7 @@ function AddForm() {
         required
         type="number"
         value={maximumLoan}
-        onChange={(e) => setMaximumLoan(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMaximumLoan(e.target.valueAsNumber)}
       />
       <TextField
         id="filled-basic"
@@ -64,7 +69,7 @@ function AddForm() {
         required
         type="number"
         value={minimumDownPayment}
-        onChange={(e) => setMinimumDownPayment(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMinimumDownPayment(e.target.valueAsNumber)}
       />
       <TextField
         id="filled-basic"
@@ -73,7 +78,7 @@ function AddForm() {
         variant="outlined"
         type="number"
         value={loanTerm}
-        onChange={(e) => setLoanTerm(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLoanTerm(e.target.valueAsNumber)}
       />
       <Button variant="contained" type="submit">
         Add new bank!

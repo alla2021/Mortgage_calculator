@@ -1,5 +1,5 @@
 export interface IBank {
-  id: number;
+  id?: number;
   title: string;
   interestRate: number;
   maximumLoan: number;

@@ -8,19 +8,19 @@ import { IBank } from "../types";
 function EditForm() {
   const { id } = useParams();
   console.log(id);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<IBank>({
     title: "",
-    interestRate: "",
-    maximumLoan: "",
-    minimumDownPayment: "",
-    loanTerm: "",
+    interestRate:0,
+    maximumLoan: 0,
+    minimumDownPayment: 0,
+    loanTerm: 0,
   });
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchList() {
       const banks = await getBanks();
-      const editBank = banks.find((item: any) => {
+      const editBank = banks.find((item) => {
         return parseInt(id) === parseInt(item.id);
       });
       setFormData(editBank);
@@ -65,8 +65,8 @@ function EditForm() {
             value={formData.interestRate}
             type="number"
             required
-            onChange={(e) =>
-              setFormData({ ...formData, interestRate: e.target.value })
+            onChange={(e:React.ChangeEvent<HTMLInputElement>) =>
+              setFormData({ ...formData, interestRate: e.target.valueAsNumber })
             }
           />
           <TextField
@@ -76,8 +76,8 @@ function EditForm() {
             required
             type="number"
             value={formData.maximumLoan}
-            onChange={(e) =>
-              setFormData({ ...formData, maximumLoan: e.target.value })
+            onChange={(e:React.ChangeEvent<HTMLInputElement>) =>
+              setFormData({ ...formData, maximumLoan: e.target.valueAsNumber })
             }
           />
           <TextField
@@ -87,8 +87,8 @@ function EditForm() {
             required
             type="number"
             value={formData.minimumDownPayment}
-            onChange={(e) =>
-              setFormData({ ...formData, minimumDownPayment: e.target.value })
+            onChange={(e:React.ChangeEvent<HTMLInputElement>) =>
+              setFormData({ ...formData, minimumDownPayment: e.target.valueAsNumber })
             }
           />
           <TextField
@@ -98,15 +98,15 @@ function EditForm() {
             variant="outlined"
             type="number"
             value={formData.loanTerm}
-            onChange={(e) =>
-              setFormData({ ...formData, loanTerm: e.target.value })
+            onChange={(e:React.ChangeEvent<HTMLInputElement>) =>
+              setFormData({ ...formData, loanTerm: e.target.valueAsNumber })
             }
           />
           <Button variant="contained" type="submit">
             Edit movie
           </Button>
         </form>
-      </div>
+      </div> 
     </>
   );
 }
