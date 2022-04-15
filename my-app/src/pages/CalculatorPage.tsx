@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Box, Typography, Button, TextField  } from "@mui/material/";
+import { Container, Box, Typography, Button, TextField } from "@mui/material/";
 import { getBanks } from "../bankService";
 import { IBank } from "../types";
 import MenuItem from "@mui/material/MenuItem";
@@ -22,15 +22,18 @@ const CalculatorPage = () => {
   }, []);
 
   const calculate = (e) => {
+    e.preventDefault(e);
     const monthlyRate = selectedOption.interestRate / 12;
     const numberMouthPayment = selectedOption.loanTerm * 12;
     const pow = Math.pow(1 + monthlyRate, numberMouthPayment);
     const result = ((initialLoan * monthlyRate * pow) / pow - 1).toFixed(2);
     let viewResult = result;
     if (initialLoan > selectedOption.maximumLoan) {
-      viewResult = "The bank doesn't lent that much money. Reduce your loan amount.";
+      viewResult =
+        "The bank doesn't lent that much money. Reduce your loan amount.";
     } else if (downPayment < selectedOption.minimumDownPayment) {
-      viewResult = "Down payment DO NOT satisfies the minimum down payment boundary of the bank.";
+      viewResult =
+        "Down payment DO NOT satisfies the minimum down payment boundary of the bank.";
     } else {
       viewResult = result;
     }
@@ -39,51 +42,65 @@ const CalculatorPage = () => {
 
   return (
     <>
-    <Container maxWidth="md">
-      <Box>
-        <TextField
-          id="filled-basic"
-          label="Initial loan"
-          variant="outlined"
-          type="number"
-          required
-          value={initialLoan}
-          onChange={(e:React.ChangeEvent<HTMLInputElement>) => setInitialLoan(e.target.valueAsNumber)}
-        />
-        <TextField
-          id="filled-basic"
-          label="Down payment"
-          variant="outlined"
-          type="number"
-          required
-          value={downPayment}
-          inputProps={{ min: "0", step: "100" }}
-          onChange={(e:React.ChangeEvent<HTMLInputElement>) => setDownPayment(e.target.valueAsNumber)}
-        />
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Select Bank</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            // defaultValue=""
-            value={selectedOption ?? ''}
+      <Container maxWidth="md">
+        <Box component="form" sx={{ mt: 3 }} onSubmit={calculate}>
+          <TextField
+            id="filled-basic"
+            label="Initial loan"
+            margin="normal"
+            variant="outlined"
+            type="number"
+            required
+            fullWidth
+            value={initialLoan}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setInitialLoan(e.target.valueAsNumber)
+            }
+          />
+          <TextField
+            id="filled-basic"
+            label="Down payment"
+            variant="outlined"
+            type="number"
+            margin="normal"
+            required
+            fullWidth
+            value={downPayment}
             inputProps={{ min: "0", step: "100" }}
-            onChange={(e:React.ChangeEvent<HTMLInputElement>) => setSelectedOption((e.target as any).value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDownPayment(e.target.valueAsNumber)
+            }
+          />
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Select Bank</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={selectedOption ?? ""}
+              inputProps={{ min: "0", step: "100" }}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSelectedOption((e.target as any).value)
+              }
+            >
+              {bank.map((item) => (
+                <MenuItem key={item.id} value={item}>
+                  {item.title}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Button
+            variant="contained"
+            type="submit"
+            fullWidth
+            sx={{ mt: 3, mb: 2 }}
           >
-            {bank.map((item) => (
-              <MenuItem key={item.id} value={item}>
-                {item.title}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <Button variant="contained" type="submit" onClick={calculate}>
-          Click
-        </Button>
-        <Typography variant="h2" gutterBottom component="div">
-          {viewResult}
-        </Typography>
-      </Box>
+            Click
+          </Button>
+          <Typography variant="h4" gutterBottom component="div">
+            {viewResult}
+          </Typography>
+        </Box>
       </Container>
     </>
   );

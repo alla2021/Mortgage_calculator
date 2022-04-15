@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Button, TextField } from "@mui/material/";
+import { Box, Container, Button, TextField } from "@mui/material/";
 import { getBanks, editBankData } from "../bankService";
 import { useNavigate } from "react-router-dom";
 import { IBank } from "../types";
@@ -46,11 +46,18 @@ function EditForm() {
   return (
     <>
       <Container maxWidth="md">
-        <form className="form" onSubmit={handleUpdateBankItem}>
+        <Box
+          component="form"
+          noValidate
+          sx={{ mt: 1 }}
+          onSubmit={handleUpdateBankItem}
+        >
           <TextField
             id="filled-basic"
             label="title"
             required
+            fullWidth
+            margin="normal"
             variant="outlined"
             value={formData.title}
             onChange={(e) =>
@@ -61,8 +68,10 @@ function EditForm() {
             id="filled-basic"
             label="Interest rate"
             variant="outlined"
+            margin="normal"
             value={formData.interestRate}
             type="number"
+            fullWidth
             required
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setFormData({ ...formData, interestRate: e.target.valueAsNumber })
@@ -73,6 +82,8 @@ function EditForm() {
             label=" Maximum loan"
             variant="outlined"
             required
+            fullWidth
+            margin="normal"
             type="number"
             value={formData.maximumLoan}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -84,6 +95,8 @@ function EditForm() {
             label="Minimum Down Payment"
             variant="outlined"
             required
+            fullWidth
+            margin="normal"
             type="number"
             value={formData.minimumDownPayment}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -97,6 +110,8 @@ function EditForm() {
             id="filled-basic"
             label="Loan term"
             required
+            fullWidth
+            margin="normal"
             variant="outlined"
             type="number"
             value={formData.loanTerm}
@@ -104,10 +119,15 @@ function EditForm() {
               setFormData({ ...formData, loanTerm: e.target.valueAsNumber })
             }
           />
-          <Button variant="contained" type="submit">
+          <Button
+            variant="contained"
+            type="submit"
+            fullWidth
+            sx={{ mt: 3, mb: 2 }}
+          >
             Edit movie
           </Button>
-        </form>
+        </Box>
       </Container>
     </>
   );
