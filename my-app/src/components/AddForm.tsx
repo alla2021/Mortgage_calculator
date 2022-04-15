@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, TextField } from "@mui/material/";
+import { Button, TextField, Box } from "@mui/material/";
 import { useNavigate } from "react-router-dom";
 import { addBankBd } from "../bankService";
 
@@ -35,7 +35,9 @@ function AddForm() {
   // }
 
   return (
+    <>
     <form className="form" onSubmit={handleAddBankSubmit}>
+      <Box>
       <TextField
         id="filled-basic"
         label="Title"
@@ -83,7 +85,9 @@ function AddForm() {
       <Button variant="contained" type="submit">
         Add new bank!
       </Button>
+      </Box>
     </form>
+    </>
   );
 }
 

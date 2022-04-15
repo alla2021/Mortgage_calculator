@@ -6,8 +6,6 @@ import AddForm from "../src/components/AddForm";
 import CalculatorPage from "../src/pages/CalculatorPage";
 import { Route, Routes } from "react-router-dom";
 
-
-
 function App() {
   return (
     <>

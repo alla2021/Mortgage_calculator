@@ -4,8 +4,8 @@
       "id": 170.1788102539419,
       "title": "d",
       "interestRate": 4,
-      "maximumLoan": 4,
-      "minimumDownPayment": 5,
+      "maximumLoan": 400,
+      "minimumDownPayment": 15,
       "loanTerm": 5
     }
   ]
