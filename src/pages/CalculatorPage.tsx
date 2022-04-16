@@ -23,11 +23,13 @@ const CalculatorPage = () => {
 
   const calculate = (e) => {
     e.preventDefault(e);
-    const monthlyRate = selectedOption.interestRate / 12;
-    const numberMouthPayment = selectedOption.loanTerm * 12;
-    const pow = Math.pow(1 + monthlyRate, numberMouthPayment);
-    const result = ((initialLoan * monthlyRate * pow) / pow - 1).toFixed(2);
+    const p = (initialLoan-downPayment);
+    const monthlyRate = selectedOption.interestRate / 12 /100; 
+    const month = selectedOption.loanTerm * 12;
+    const pow = Math.pow(1 + monthlyRate, month);
+    const result = (p*monthlyRate*pow/(pow - 1)).toFixed(2);
     let viewResult = result;
+
     if (initialLoan > selectedOption.maximumLoan) {
       viewResult =
         "The bank doesn't lent that much money. Reduce your loan amount.";
@@ -35,7 +37,7 @@ const CalculatorPage = () => {
       viewResult =
         "Down payment DO NOT satisfies the minimum down payment boundary of the bank.";
     } else {
-      viewResult = result;
+      viewResult = `$ ${result}/month`;
     }
     return setResult(viewResult);
   };
@@ -66,7 +68,7 @@ const CalculatorPage = () => {
             required
             fullWidth
             value={downPayment}
-            inputProps={{ min: "0", step: "100" }}
+            inputProps={{ min: "0", step: "1" }}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setDownPayment(e.target.valueAsNumber)
             }
@@ -77,7 +79,7 @@ const CalculatorPage = () => {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={selectedOption ?? ""}
-              inputProps={{ min: "0", step: "100" }}
+              inputProps={{ min: "0", step: "1" }}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setSelectedOption((e.target as any).value)
               }

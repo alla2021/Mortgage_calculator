@@ -14,15 +14,15 @@
       "interestRate": 2,
       "maximumLoan": 500000,
       "minimumDownPayment": 5000,
-      "loanTerm": 10
+      "loanTerm": 15
     },
     {
       "id": 29.77412121937939,
       "title": "Oshad",
-      "interestRate": 4,
-      "maximumLoan": 44,
-      "minimumDownPayment": 44,
-      "loanTerm": 444
+      "interestRate": 10,
+      "maximumLoan": 10000,
+      "minimumDownPayment": 0,
+      "loanTerm": 15
     }
   ]
 }
